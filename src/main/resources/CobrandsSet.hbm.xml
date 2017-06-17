@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+    <class name="hardik.hibernate.collectionMap.Cobrands" table="COBRANDS">
+        <meta attribute="class-descriptoin">
+            This example is for Collection Mapping using Set.
+        </meta>
+
+        <id name="cobID" type="int" column="COB_ID">
+
+        </id>
+
+        <property name="cobName" type="string" column="COB_NAME"></property>
+        <property name="cobEnv" type="string" column="COB_ENVIRONMENT"></property>
+
+        <set name="certificates" cascade="save-update">
+            <key column="cobrand_ID"/>
+            <one-to-many class="hardik.hibernate.collectionMap.Certificates"/>
+        </set>
+    </class>
+
+    <class name="hardik.hibernate.collectionMap.Certificates" table="CERTIFICATE">
+        <meta attribute="class-descriptor">
+            This is Associated Class with Cobrands Table that will contain Certificates.
+        </meta>
+        <id name="certNo" type="int" column="CERT_No">
+
+        </id>
+
+        <property name="certName" type="string" column="CERT_NAME"/>
+
+    </class>
+</hibernate-mapping>
